@@ -1,0 +1,30 @@
+
+/* ── FOOTER ── */
+footer {
+    position: relative;
+    z-index: 1;
+    background: var(--bg2);
+    border-top: 1px solid var(--border);
+    padding: 36px clamp(18px, 5vw, 80px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.footer-name {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    color: var(--white);
+    font-weight: 600;
+}
+
+.footer-name span {
+    color: var(--accent);
+}
+
+.footer-copy {
+    font-size: 0.76rem;
+    color: var(--muted2);
+}
