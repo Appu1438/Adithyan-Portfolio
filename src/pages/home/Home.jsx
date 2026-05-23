@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import "./Home.css";
+import "./home.css";
 import Footer from "../../components/footer/Footer";
 import Header from "../../components/header/Header";
 // ── Scroll Reveal Hook ──
