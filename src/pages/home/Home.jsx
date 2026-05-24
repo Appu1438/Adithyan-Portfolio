@@ -1,7 +1,5 @@
 import { useEffect } from "react";
 import "./home.css";
-import Footer from "../../components/footer/Footer";
-import Header from "../../components/header/Header";
 // ── Scroll Reveal Hook ──
 function useReveal() {
     useEffect(() => {
@@ -30,7 +28,6 @@ export default function Home() {
 
     return (
         <>
-            <Header />
             {/* ── HERO ── */}
             <section id="hero">
                 <div className="hero-ambient" />
@@ -489,7 +486,6 @@ export default function Home() {
 
             {/* ── Back to Top ── */}
             <a href="#hero" id="btt">↑</a>
-            <Footer />
         </>
     );
 }
