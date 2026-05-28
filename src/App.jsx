@@ -1,19 +1,23 @@
-import './App.css'
-import Footer from './components/footer/Footer'
-import Header from './components/header/Header'
-import Home from './pages/home/Home'
+
+import { Routes, Route, BrowserRouter } from "react-router-dom";
+
+import MainLayout from "./layout/MainLayout";
+
+import Home from "./pages/home/Home";
+import NotFound from "./pages/notFound/NotFound";
 
 function App() {
-
   return (
-    <>
-      <Header />
-      <main>
-        <Home />
-      </main>
-      <Footer />
-    </>
-  )
+    <BrowserRouter>
+      <Routes>
+        <Route element={<MainLayout />}>
+          <Route path="/" element={<Home />} />
+
+          <Route path="*" element={<NotFound />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;

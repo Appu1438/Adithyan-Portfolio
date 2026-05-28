@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import "./home.css";
+import { Helmet } from "react-helmet-async";
 // ── Scroll Reveal Hook ──
 function useReveal() {
     useEffect(() => {
@@ -28,6 +29,71 @@ export default function Home() {
 
     return (
         <>
+
+            <Helmet>
+                <title>
+                    Adithyan S Kumar | Full Stack MERN Developer
+                </title>
+
+                <meta
+                    name="description"
+                    content="Adithyan S Kumar is a Full Stack MERN Developer specializing in React, Node.js, MongoDB, Express and React Native applications."
+                />
+
+                <meta
+                    name="keywords"
+                    content="Adithyan S Kumar, MERN Stack Developer, React Developer, Node.js Developer, Full Stack Developer"
+                />
+
+                <meta name="robots" content="index, follow" />
+
+                <link
+                    rel="canonical"
+                    href="https://adithyanskumar.netlify.app/"
+                />
+
+                <meta property="og:type" content="website" />
+
+                <meta
+                    property="og:title"
+                    content="Adithyan S Kumar | Full Stack MERN Developer"
+                />
+
+                <meta
+                    property="og:description"
+                    content="Portfolio of Adithyan S Kumar showcasing full stack MERN projects, React applications, Node.js APIs and mobile apps."
+                />
+
+                <meta
+                    property="og:image"
+                    content="https://adithyanskumar.netlify.app/assets/img/Adithyan%20S%20Kumar%203.jpeg"
+                />
+
+                <meta
+                    property="og:url"
+                    content="https://adithyanskumar.netlify.app/"
+                />
+
+                <meta
+                    name="twitter:card"
+                    content="summary_large_image"
+                />
+
+                <meta
+                    name="twitter:title"
+                    content="Adithyan S Kumar | Full Stack MERN Developer"
+                />
+
+                <meta
+                    name="twitter:description"
+                    content="Full Stack MERN Developer specializing in React, Node.js, MongoDB and React Native."
+                />
+
+                <meta
+                    name="twitter:image"
+                    content="https://adithyanskumar.netlify.app/assets/img/Adithyan%20S%20Kumar%203.jpeg"
+                />
+            </Helmet>
             {/* ── HERO ── */}
             <section id="hero">
                 <div className="hero-ambient" />

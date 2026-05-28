@@ -1,0 +1,275 @@
+/* ── NotFound Page ── */
+/* Assumes CSS variables are declared in home.css / index.css */
+
+/* ── Root layout ── */
+.nf-root {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: var(--bg);
+    padding: clamp(40px, 8vw, 100px) clamp(18px, 5vw, 80px);
+}
+
+/* ── Ambient blobs (mirrors hero) ── */
+.nf-ambient {
+    position: absolute;
+    width: 700px;
+    height: 700px;
+    background: radial-gradient(circle, rgba(56, 189, 248, 0.1) 0%, transparent 65%);
+    top: -140px;
+    right: -180px;
+    pointer-events: none;
+    animation: nfDrift 10s ease-in-out infinite alternate;
+}
+
+.nf-ambient2 {
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(245, 158, 11, 0.07) 0%, transparent 70%);
+    bottom: -60px;
+    left: -80px;
+    pointer-events: none;
+    animation: nfDrift 14s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes nfDrift {
+    from { transform: translate(0, 0) scale(1); }
+    to   { transform: translate(20px, 30px) scale(1.05); }
+}
+
+/* ── Floating particles ── */
+.nf-particles {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.nf-particle {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: var(--accent);
+    opacity: 0;
+    animation: nfFloat calc(6s + var(--i, 0) * 0.7s) ease-in-out infinite;
+    left: calc(var(--i, 0) * 5.8% + 2%);
+    bottom: -10px;
+    filter: blur(0.5px);
+}
+
+.nf-particle:nth-child(even) {
+    background: rgba(245, 158, 11, 0.6);
+    width: 2px;
+    height: 2px;
+}
+
+@keyframes nfFloat {
+    0%   { opacity: 0;   transform: translateY(0) scale(0.8); }
+    15%  { opacity: 0.6; }
+    85%  { opacity: 0.3; }
+    100% { opacity: 0;   transform: translateY(-100vh) scale(1.2); }
+}
+
+/* ── Content wrapper ── */
+.nf-content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 640px;
+    width: 100%;
+}
+
+/* ── Eyebrow ── */
+.nf-eye {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--accent);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    animation: nfFadeUp 0.55s ease 0.05s both;
+}
+
+.nf-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    animation: blink 2s infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.3; }
+}
+
+/* ── Giant 404 with glitch ── */
+.nf-big {
+    font-family: var(--serif);
+    font-size: clamp(6rem, 22vw, 14rem);
+    font-weight: 600;
+    line-height: 1;
+    color: var(--white);
+    letter-spacing: -0.05em;
+    position: relative;
+    margin-bottom: 32px;
+    animation: nfFadeUp 0.65s ease 0.1s both;
+    user-select: none;
+}
+
+/* Glitch pseudo layers */
+.nf-big::before,
+.nf-big::after {
+    content: attr(data-text);
+    position: absolute;
+    inset: 0;
+    color: var(--white);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nf-big::before {
+    color: var(--accent);
+    clip-path: polygon(0 20%, 100% 20%, 100% 40%, 0 40%);
+    transform: translate(-3px, 0);
+}
+
+.nf-big::after {
+    color: #f59e0b;
+    clip-path: polygon(0 60%, 100% 60%, 100% 80%, 0 80%);
+    transform: translate(3px, 0);
+}
+
+/* Triggered by JS class */
+.nf-big.glitch-active::before {
+    animation: nfGlitchA 0.4s steps(2) forwards;
+}
+
+.nf-big.glitch-active::after {
+    animation: nfGlitchB 0.4s steps(2) forwards;
+}
+
+@keyframes nfGlitchA {
+    0%  { opacity: 0.9; transform: translate(-4px, 1px); }
+    25% { opacity: 0;   transform: translate(3px, -1px); }
+    50% { opacity: 0.7; transform: translate(-2px, 2px); }
+    75% { opacity: 0;   }
+    100%{ opacity: 0;   transform: translate(0); }
+}
+
+@keyframes nfGlitchB {
+    0%  { opacity: 0.8; transform: translate(4px, -2px); }
+    30% { opacity: 0;   transform: translate(-3px, 1px); }
+    60% { opacity: 0.6; transform: translate(2px, -1px); }
+    100%{ opacity: 0;   transform: translate(0); }
+}
+
+/* Subtle constant glow */
+.nf-big {
+    text-shadow: 0 0 80px rgba(56, 189, 248, 0.15);
+}
+
+/* ── Code card ── */
+.nf-code-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: 0 0 50px rgba(56, 189, 248, 0.07), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    width: 100%;
+    max-width: 420px;
+    margin-bottom: 28px;
+    animation: nfFadeUp 0.65s ease 0.2s both;
+    text-align: left;
+}
+
+.nf-code-bar {
+    background: var(--surface2);
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid var(--border);
+}
+
+.nf-file-tag {
+    font-family: var(--mono);
+    font-size: 0.69rem;
+    color: var(--muted2);
+    margin-left: 6px;
+}
+
+.nf-code-body {
+    padding: 18px;
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    line-height: 1.9;
+    color: var(--muted);
+}
+
+/* Reuse token colours from home.css */
+.ck { color: #93c5fd; }
+.cs { color: #86efac; }
+.co { color: #fbbf24; }
+.cp { color: var(--muted2); }
+
+/* ── Description ── */
+.nf-desc {
+    font-size: 0.95rem;
+    color: var(--muted);
+    line-height: 1.8;
+    max-width: 440px;
+    margin-bottom: 36px;
+    animation: nfFadeUp 0.65s ease 0.28s both;
+}
+
+/* ── Buttons ── */
+.nf-btns {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 36px;
+    animation: nfFadeUp 0.65s ease 0.34s both;
+}
+
+/* ── Chips ── */
+.nf-chips {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+    animation: nfFadeUp 0.65s ease 0.4s both;
+}
+
+/* ── Shared fade-up ── */
+@keyframes nfFadeUp {
+    from { opacity: 0; transform: translateY(22px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Responsive ── */
+@media (max-width: 480px) {
+    .nf-btns {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nf-btns .btn-primary,
+    .nf-btns .btn-outline {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+    }
+}
