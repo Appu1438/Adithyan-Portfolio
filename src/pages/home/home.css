@@ -1030,3 +1030,73 @@ section {
     }
 }
 
+/* ===== FIX EXTRA PAGE WIDTH / HORIZONTAL OVERFLOW ===== */
+
+html,
+body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+/* Prevent all sections from exceeding viewport */
+section,
+#hero,
+#about,
+#skills,
+#resume,
+#portfolio,
+#services,
+#contact {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+/* Fix grid items causing overflow */
+* {
+    min-width: 0;
+}
+
+/* Hero ambient blur was creating extra width */
+.hero-ambient {
+    right: 0;
+    transform: translateX(35%);
+    overflow: hidden;
+}
+
+.hero-ambient2 {
+    left: 0;
+    transform: translateX(-35%);
+    overflow: hidden;
+}
+
+/* Prevent cards/grids from stretching layout */
+.about-grid,
+.exp-grid,
+.contact-grid,
+.svc-layout,
+.proj-grid,
+.skills-wrap,
+.stats-row {
+    width: 100%;
+    max-width: 100%;
+}
+
+/* Images should never overflow */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Mobile overflow protection */
+@media (max-width: 820px) {
+    body {
+        overflow-x: hidden;
+    }
+
+    #hero {
+        overflow-x: hidden;
+    }
+}

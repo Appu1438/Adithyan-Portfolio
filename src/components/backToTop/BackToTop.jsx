@@ -28,12 +28,12 @@ export default function BackToTop() {
   };
 
   return (
-    <button
+    <a
       id="btt"
       className={show ? "show" : ""}
       onClick={scrollTop}
     >
       ↑
-    </button>
+    </a>
   );
 }
