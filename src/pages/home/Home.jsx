@@ -13,19 +13,9 @@ function useReveal() {
     }, []);
 }
 
-// ── Back To Top Hook ──
-function useBackToTop() {
-    useEffect(() => {
-        const btt = document.getElementById("btt");
-        const handler = () => btt?.classList.toggle("show", window.scrollY > 400);
-        window.addEventListener("scroll", handler, { passive: true });
-        return () => window.removeEventListener("scroll", handler);
-    }, []);
-}
 
 export default function Home() {
     useReveal();
-    useBackToTop();
 
     return (
         <>
@@ -550,8 +540,6 @@ export default function Home() {
                 </div>
             </section>
 
-            {/* ── Back to Top ── */}
-            <a href="#hero" id="btt">↑</a>
         </>
     );
 }

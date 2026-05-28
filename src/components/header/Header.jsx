@@ -10,7 +10,7 @@ export default function Header() {
   return (
     <>
       <nav>
-        <a href="#hero" className="nav-logo">
+        <a href="/" className="nav-logo">
           Adithyan<span>.</span>
         </a>
 
