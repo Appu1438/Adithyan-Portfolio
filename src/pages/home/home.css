@@ -355,7 +355,7 @@ section {
 .file-tag {
     font-family: var(--mono);
     font-size: 0.69rem;
-    color: var(--muted2);
+    color:#93c5fd;
     margin-left: 6px;
 }
 
